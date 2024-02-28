@@ -1,4 +1,6 @@
 using Carter;
+using Microsoft.EntityFrameworkCore;
+using Novit.Academia.Database;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +13,8 @@ builder.Services.AddCarter();
 
 builder.Services.AddCors(options =>
     options.AddPolicy("Academia2024", policy => policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));
+
+builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlite(config.GetConnectionString("AppDb")));
 
 var app = builder.Build();
 
