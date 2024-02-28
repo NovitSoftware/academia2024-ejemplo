@@ -10,9 +10,9 @@ public class Producto
 
     public required decimal Precio { get; set; }
 
-    public string? Imagen { get; set; }
+    public string? UrlImagen { get; set; }
 
     public int Stock { get; set; } = 0;
 
-    public List<ItemCarrito> Items { get; set; } = [];
+    public List<ItemCarrito> Items { get; set; } = new List<ItemCarrito>();
 }

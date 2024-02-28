@@ -4,7 +4,7 @@ public class ItemCarrito
 {
     public int IdItemCarrito { get; set; }
     
-    public int Cantidad { get; set; } = 0;
+    public int Cantidad { get; set; } = 1;
     
     public required Producto Producto { get; set; } 
     
