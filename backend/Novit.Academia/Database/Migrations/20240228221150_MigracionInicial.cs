@@ -2,6 +2,8 @@
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace Novit.Academia.Database.Migrations
 {
     /// <inheritdoc />
@@ -65,6 +67,16 @@ namespace Novit.Academia.Database.Migrations
                         principalTable: "Producto",
                         principalColumn: "IdProducto",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Producto",
+                columns: new[] { "IdProducto", "Descripcion", "Nombre", "Precio", "Stock", "UrlImagen" },
+                values: new object[,]
+                {
+                    { 1, null, "Lavandina", 1000m, 100, null },
+                    { 2, null, "Detergente", 750m, 43, null },
+                    { 3, null, "Esponja", 200m, 2340, null }
                 });
 
             migrationBuilder.CreateIndex(

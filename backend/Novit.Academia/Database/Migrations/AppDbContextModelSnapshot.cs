@@ -82,6 +82,29 @@ namespace Novit.Academia.Database.Migrations
                     b.HasKey("IdProducto");
 
                     b.ToTable("Producto");
+
+                    b.HasData(
+                        new
+                        {
+                            IdProducto = 1,
+                            Nombre = "Lavandina",
+                            Precio = 1000m,
+                            Stock = 100
+                        },
+                        new
+                        {
+                            IdProducto = 2,
+                            Nombre = "Detergente",
+                            Precio = 750m,
+                            Stock = 43
+                        },
+                        new
+                        {
+                            IdProducto = 3,
+                            Nombre = "Esponja",
+                            Precio = 200m,
+                            Stock = 2340
+                        });
                 });
 
             modelBuilder.Entity("Novit.Academia.Domain.ItemCarrito", b =>

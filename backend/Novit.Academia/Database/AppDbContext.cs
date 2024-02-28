@@ -14,4 +14,31 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
     public DbSet<Producto> Productos { get; set; }
     public DbSet<ItemCarrito> Items { get; set; }
     public DbSet<Carrito> Carritos { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Producto>().HasData(
+            new Producto
+            {
+                IdProducto = 1,
+                Nombre = "Lavandina",
+                Precio = 1000,
+                Stock = 100
+            },
+            new Producto
+            {
+                IdProducto = 2,
+                Nombre = "Detergente",
+                Precio = 750,
+                Stock = 43
+            },
+            new Producto
+            {
+                IdProducto = 3,
+                Nombre = "Esponja",
+                Precio = 200,
+                Stock = 2340
+            }
+            );
+    }
 }
