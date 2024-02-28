@@ -1,6 +1,6 @@
 ﻿using Carter;
 
-namespace Novit.Academia.Features.Products;
+namespace Novit.Academia.Endpoints;
 
 public class ProductoEndpoints : ICarterModule
 {
