@@ -19,9 +19,10 @@ public class ProductoEndpoints : ICarterModule
 
         }).WithTags("Producto");
 
-        app.MapGet("/{idProducto}", (AppDbContext context, int idProducto) =>
+        app.MapGet("/{idProducto:int}", (AppDbContext context, int idProducto) =>
         {
-            var productos = context.Productos.Where(p => p.IdProducto == idProducto).Select(p => p.ConvertToProductoDto());
+            var productos = context.Productos.Where(p => p.IdProducto == idProducto)
+                .Select(p => p.ConvertToProductoDto());
 
             return Results.Ok(productos);
         }).WithTags("Producto");

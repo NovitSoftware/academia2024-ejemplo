@@ -9,4 +9,10 @@
 //    public int Stock { get; set; } = 0;
 //}
 
-public record ProductoDto(string Nombre, string Descripcion, decimal Precio, string? UrlImagen, int Stock);
+public record ProductoDto(
+    int IdProducto, 
+    string Nombre, 
+    string Descripcion, 
+    decimal Precio, 
+    string? UrlImagen, 
+    int Stock);
