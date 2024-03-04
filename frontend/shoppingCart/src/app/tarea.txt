@@ -1,0 +1,17 @@
+* Creen un nuevo componente, por ejemplo Auth,
+que este internamente tenga los componentes Login y Register dentro de una carpeta llamada pages
+
+Ejemplo: Auth/pages/login y auth/pages/register
+
+comando: -ng generate module [url]
+         -ng generate component [url]
+
+Recuerden tener primero el modulo para que lo importe directamente al modulo mas cercano.
+
+* Agregar rutas para clientes
+* Intentar trabajar con templates (ej: el home-page component en productos.)
+
+
+
+
+
