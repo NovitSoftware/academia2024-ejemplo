@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ClienteComponent } from './cliente/cliente.component';
+import { DirectivasComponent } from './directivas/directivas.component';
+import { CiclosComponent } from './ciclos/ciclos.component';
+import { FormsComponent } from './forms/forms.component';
 
 const routes: Routes = [
   {
@@ -13,10 +16,14 @@ const routes: Routes = [
     component: ClienteComponent
   },
   {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module')
+    .then(m => m.AuthModule)
+  },
+  {
     // dominion.com/'' --> monta el componente Productos
     path: '',
-    redirectTo: 'productos',
-    pathMatch: 'full'
+    component: CiclosComponent,
   },
   {
     path: '**',

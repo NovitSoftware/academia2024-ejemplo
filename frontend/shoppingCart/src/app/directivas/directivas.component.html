@@ -1,0 +1,71 @@
+<h1>{{title}}</h1>
+<hr>
+
+<h3>NgIf</h3>
+<div *ngIf="getEsCliente(), else noVisible">
+  <p>Se esta mostrando el parrafo de cliente.</p>
+</div>
+
+<ng-template #noVisible>
+    <p>No tiene permisos</p>
+</ng-template>
+
+
+<!-- *ngFor="let item of list" -->
+<h3>NgFor</h3>
+
+<ul *ngFor="let item of clientesData">
+    <li>{{item}}</li>
+</ul>
+
+<h3>NgSwitch</h3>
+<div [ngSwitch]="condicion">
+  <div *ngSwitchCase="7">{{jugadorN7.name}}</div>
+  <div *ngSwitchCase="8">Mostrar jugador numero 8</div>
+  <div *ngSwitchDefault>No existe este jugador</div>
+</div>
+
+
+<h1>Control Flow</h1>
+<br>
+
+<h3>If</h3>
+@if(getEsCliente()){
+  <p>Se esta mostrando el parrafo de cliente.</p>
+}@else {
+  <p>No tiene permisos</p>
+}
+
+<h3>Switch</h3>
+
+@switch (condicion)
+{
+  @case (7) {
+    <p>{{jugadorN7.name}}</p>
+  }
+}
+
+<h3>For</h3>
+<ul>
+
+  @for (item of clientesData; track $index) {
+    <li> {{item}}</li>
+  }
+</ul>
+
+
+<h1 style="color: red;">Directivas de Atributo</h1>
+<hr>
+
+
+<h2>NgStyle</h2>
+<p [ngStyle]="{color: segunNumero()}" >Cambiando color con directiva ngStyle</p>
+
+
+<h2>NgClass</h2>
+<p [ngClass]="{esUsuario: segunUsuario()}" >Cambiando color con directiva ngClass</p>
+
+
+
+<button (click)="getEsCliente()" >No mostrar</button>
+
