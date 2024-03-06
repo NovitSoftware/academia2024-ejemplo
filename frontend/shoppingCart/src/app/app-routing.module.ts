@@ -4,6 +4,7 @@ import { ClienteComponent } from './cliente/cliente.component';
 import { DirectivasComponent } from './directivas/directivas.component';
 import { CiclosComponent } from './ciclos/ciclos.component';
 import { FormsComponent } from './forms/forms.component';
+import { ProductosComponent } from './productos/productos.component';
 
 const routes: Routes = [
   {
@@ -23,7 +24,7 @@ const routes: Routes = [
   {
     // dominion.com/'' --> monta el componente Productos
     path: '',
-    component: CiclosComponent,
+    component: ProductosComponent,
   },
   {
     path: '**',

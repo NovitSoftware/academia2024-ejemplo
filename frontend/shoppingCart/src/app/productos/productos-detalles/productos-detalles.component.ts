@@ -12,5 +12,8 @@ export class ProductosDetallesComponent {
 
 title: string = 'seccion productos detalle'
 
+tieneStock():string{
+  return 'red';
+}
 
 }
