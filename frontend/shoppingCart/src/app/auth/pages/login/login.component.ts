@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserLogin } from './interface/user-login.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,7 @@ import { UserLogin } from './interface/user-login.interface';
 })
 export class LoginComponent implements OnInit {
   private fb = inject(FormBuilder)
-
+  private router = inject(Router);
   myForm!: FormGroup
 
 
@@ -34,6 +35,10 @@ export class LoginComponent implements OnInit {
     console.log(this.myForm.value);
 
     const newUsuario = this.myForm.value as UserLogin
+
+    // result ok:
+    this.router.navigateByUrl('productos')
+    // this.router.navigate(['detalle', 1])
 
   }
 

@@ -5,12 +5,14 @@ import { ProductosDetallesComponent } from './productos-detalles/productos-detal
 import { RouterModule } from '@angular/router';
 import { routes } from './productos-routing';
 import { HomePageComponent } from './home-page/home-page.component';
+import { ProductoIdComponent } from './producto-id/producto-id.component';
 
 @NgModule({
   declarations: [
     ProductosComponent,
     ProductosDetallesComponent,
-    HomePageComponent
+    HomePageComponent,
+    ProductoIdComponent
   ],
   imports: [
     CommonModule,

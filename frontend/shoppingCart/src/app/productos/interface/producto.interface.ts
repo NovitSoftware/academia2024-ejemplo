@@ -4,3 +4,4 @@ export interface Producto{
   precio: number | undefined;
   stock: number | undefined ;
 }
+
