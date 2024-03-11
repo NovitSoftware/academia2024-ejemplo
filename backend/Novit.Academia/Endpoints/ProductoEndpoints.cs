@@ -1,7 +1,7 @@
 ﻿using Carter;
-using Novit.Academia.Database;
-using Novit.Academia.Domain;
+using Microsoft.AspNetCore.Mvc;
 using Novit.Academia.Endpoints.DTO;
+using Novit.Academia.Service;
 
 namespace Novit.Academia.Endpoints;
 
@@ -11,68 +11,38 @@ public class ProductoEndpoints : ICarterModule
     {
         var app = routes.MapGroup("/api/Producto");
 
-        app.MapGet("/", (AppDbContext context) =>
+        app.MapGet("/", (IProductoService productoService) =>
         {
-            var productos = context.Productos.Select(p => p.ConvertToProductoDto());
+            var productos = productoService.GetProductos();
             
             return Results.Ok(productos);
 
         }).WithTags("Producto");
 
-        app.MapGet("/{idProducto:int}", (AppDbContext context, int idProducto) =>
+        app.MapGet("/{idProducto:int}", (IProductoService productoService, int idProducto) =>
         {
-            var productos = context.Productos.Where(p => p.IdProducto == idProducto)
-                .Select(p => p.ConvertToProductoDto());
+            var producto = productoService.GetProducto(idProducto); 
 
-            return Results.Ok(productos);
+            return Results.Ok(producto);
         }).WithTags("Producto");
 
-        app.MapPost("/", (AppDbContext context, ProductoDto productoDto) =>
+        app.MapPost("/", ([FromServices] IProductoService productoService, [FromBody] ProductoRequestDto productoDto) =>
         {
-            Producto producto = new Producto
-            { 
-                Nombre = productoDto.Nombre,
-                Precio = productoDto.Precio,
-                UrlImagen = productoDto.UrlImagen,
-                Descripcion = productoDto.Descripcion,
-                Stock = productoDto.Stock
-            };
-
-            context.Productos.Add(producto);
-
-            context.SaveChanges();
+            productoService.CreateProducto(productoDto);
 
             return Results.Created();
         }).WithTags("Producto");
 
-        app.MapPut("/{idProducto}", (AppDbContext context, int idProducto, ProductoDto productoDto) =>
+        app.MapPut("/{idProducto}", ([FromServices] IProductoService productoService, int idProducto, [FromBody] ProductoRequestDto productoDto) =>
         {
-            var producto = context.Productos.FirstOrDefault(p => p.IdProducto == idProducto);
-
-            if (producto is null)
-                return Results.BadRequest();
-
-            producto.Nombre = productoDto.Nombre;
-            producto.Precio = productoDto.Precio;
-            producto.Descripcion = productoDto.Descripcion;
-            producto.Stock = productoDto.Stock;
-            producto.UrlImagen = productoDto.UrlImagen;
-
-            context.SaveChanges();
+            productoService.UpdateProducto(idProducto, productoDto);
 
             return Results.Ok();
         }).WithTags("Producto");
 
-        app.MapDelete("/{idProducto}", (AppDbContext context, int idProducto) =>
+        app.MapDelete("/{idProducto}", (IProductoService productoService, int idProducto) =>
         {
-            var producto = context.Productos.FirstOrDefault(p => p.IdProducto == idProducto);
-
-            if (producto is null)
-                return Results.BadRequest();
-
-            context.Productos.Remove(producto);
-
-            context.SaveChanges();
+            productoService.DeleteProducto(idProducto);
 
             return Results.NoContent();
         }).WithTags("Producto");
