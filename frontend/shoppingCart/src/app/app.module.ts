@@ -7,19 +7,19 @@ import { ProductosModule } from './productos/productos.module';
 import { AuthModule } from './auth/auth.module';
 import { DirectivasComponent } from './directivas/directivas.component';
 import { CiclosComponent } from './ciclos/ciclos.component';
-import { FormsComponent } from './forms/forms.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     DirectivasComponent,
     CiclosComponent,
-    FormsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ProductosModule,
+    HttpClientModule,
     AuthModule
   ],
   providers: [],

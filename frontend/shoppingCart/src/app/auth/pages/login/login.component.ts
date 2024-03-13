@@ -1,16 +1,20 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { UserLogin } from './interface/user-login.interface';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserLogin } from '../../interface/user-login.interface';
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrl: './login.component.css',
+
 })
 export class LoginComponent implements OnInit {
   private fb = inject(FormBuilder)
+  private authService = inject(AuthService);
   private router = inject(Router);
+
   myForm!: FormGroup
 
 
@@ -31,13 +35,26 @@ export class LoginComponent implements OnInit {
   }
 
 
-  login(){
-    console.log(this.myForm.value);
+  login() {
+    // console.log(this.myForm.value);
 
     const newUsuario = this.myForm.value as UserLogin
 
+    this.authService.login(newUsuario)
+      .subscribe({
+        next: res => {
+
+          console.log('llego por next', res);
+
+          this.router.navigateByUrl('/')
+
+        },
+        error: err => {
+          console.log(err);
+        }
+      })
+
     // result ok:
-    this.router.navigateByUrl('productos')
     // this.router.navigate(['detalle', 1])
 
   }

@@ -1,13 +1,53 @@
-.button-submit {
-  padding: 10px;
-  color: rgb(244, 244, 250);
-  background-color: rgb(88, 88, 227);
-  border-radius: 20%;
-  margin-left: 10px;
+.login-title {
+  text-align: center;
 }
 
-input {
-  padding: 2%;
-  margin-left: 10px;
-  margin-top: 10px;
+.login-form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.label {
+  display: block;
+}
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button-submit {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.button-go-to-register {
+ text-decoration: none;
 }

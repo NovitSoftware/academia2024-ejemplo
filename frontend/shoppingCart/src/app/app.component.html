@@ -1,2 +1,3 @@
 <!-- Router outlet para agregar todas las rutas -->
+<button *ngIf="isAuthenticated" (click)="logout()">DESLOGUEAR</button>
 <router-outlet></router-outlet>

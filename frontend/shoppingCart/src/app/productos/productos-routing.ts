@@ -1,7 +1,6 @@
 
 import { HomePageComponent } from './home-page/home-page.component';
 import { ProductoIdComponent } from './producto-id/producto-id.component';
-import { ProductosDetallesComponent } from './productos-detalles/productos-detalles.component';
 import { ProductosComponent } from './productos.component';
 import { Routes } from '@angular/router';
 

@@ -1,20 +1,35 @@
-<form [formGroup]="myForm" (ngSubmit)="login()">
+<h2 class="login-title">Login</h2>
 
-  <div>
-
+<form [formGroup]="myForm" (ngSubmit)="login()" class="login-form">
+  <div class="form-group">
     <label for="username">Usuario</label>
-    <input type="text" id="username" name="username" formControlName="username">
-
+    <input
+      type="text"
+      id="username"
+      name="username"
+      formControlName="username"
+      class="form-control"
+    />
   </div>
-  <div>
 
-    <label for="username">Password</label>
-
-    <input type="password" name="password" formControlName="password">
+  <div class="form-group">
+    <label for="password">Contraseña</label>
+    <input
+      class="form-control"
+      type="password"
+      id="password"
+      name="password"
+      formControlName="password"
+    />
   </div>
 
-  <hr>
-  <button type="submit" class="button-submit">Login</button>
-  <button type="button" routerLink="/productos" class="button-submit">Ir a Productos</button>
+  <hr />
+
+  <div class="button-container">
+    <button type="submit" class="button button-submit">Iniciar Sesión</button>
+
+    <a routerLink="/auth/register" class="button button-go-to-register">
+      Ir a Registro
+    </a>
+  </div>
 </form>
-

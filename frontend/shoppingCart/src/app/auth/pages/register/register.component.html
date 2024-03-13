@@ -1,1 +1,53 @@
-<p>register works!</p>
+<h2 class="login-title">Registro</h2>
+
+<form [formGroup]="registerForm"
+(ngSubmit)="register()"
+class="login-form">
+  <div class="form-group">
+    <label for="username">Usuario</label>
+    <input
+      type="text"
+      id="username"
+      name="username"
+      class="form-control"
+      formControlName="username"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="password">Contraseña</label>
+    <input
+      id="password"
+      class="form-control"
+      type="password"
+      name="password"
+      formControlName="password"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="role">Rol</label>
+    <select name="role" id="role" formControlName="role">
+      <option value="administrador">Administrador</option>
+      <option value="vendedor">Vendedor</option>
+      <option value="comerciante">Comerciante</option>
+      <option value="cliente">Cliente</option>
+    </select>
+  </div>
+
+  <hr />
+
+  <div class="button-container">
+    <button  type="submit" class="button button-submit">Registrar</button>
+
+    <a routerLink="/auth/login" class="button button-go-to-login">
+      Ir a inicio de sesion
+    </a>
+  </div>
+</form>
+
+<br>
+<hr>
+<h1>Usuario Creado</h1>
+<p>{{usuarioCreado?.role}}</p>
+<p>{{usuarioCreado?.username}}</p>
