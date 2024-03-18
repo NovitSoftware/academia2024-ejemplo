@@ -1,19 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Novit.Academia.Domain;
+using System.Data;
 
 namespace Novit.Academia.Database;
 
 public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
 {
-    //Forma clasica contructor
-    //public AppDbContext(DbContextOptions<AppDbContext> options)
-    //   : base(options)
-    //{
-
-    //}
     public DbSet<Producto> Productos { get; set; }
     public DbSet<ItemCarrito> Items { get; set; }
     public DbSet<Carrito> Carritos { get; set; }
+    public DbSet<Usuario> Usuarios { get; set; }
+    public DbSet<Rol> Roles { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -40,5 +37,22 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
                 Stock = 2340
             }
             );
+        modelBuilder.Entity<Rol>().HasData(
+           new Rol
+           {
+               Id = Guid.NewGuid(),
+               Name = "administrador"
+           },
+           new Rol
+           {
+               Id = Guid.NewGuid(),
+               Name = "cliente"
+           },
+           new Rol
+           {
+               Id = Guid.NewGuid(),
+               Name = "vendedor"
+           }
+           );
     }
 }
