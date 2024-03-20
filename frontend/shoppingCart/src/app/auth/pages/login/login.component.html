@@ -1,7 +1,7 @@
 <h2 class="login-title">Login</h2>
 
 <form [formGroup]="myForm" (ngSubmit)="login()" class="login-form">
-  <div class="form-group">
+  <!-- <div class="form-group">
     <label for="username">Usuario</label>
     <input
       type="text"
@@ -10,9 +10,17 @@
       formControlName="username"
       class="form-control"
     />
-  </div>
+  </div> -->
+  <mat-form-field>
+    <mat-label>Username</mat-label>
+    <input
+      matInput
+      formControlName="username"
+      placeholder="Ingrese nombre usuario"
+    />
+  </mat-form-field>
 
-  <div class="form-group">
+  <!-- <div class="form-group">
     <label for="password">Contraseña</label>
     <input
       class="form-control"
@@ -21,15 +29,43 @@
       name="password"
       formControlName="password"
     />
-  </div>
+  </div> -->
+
+  <mat-form-field>
+    <mat-label>Password</mat-label>
+    <input matInput formControlName="password" type="password" />
+  </mat-form-field>
 
   <hr />
 
   <div class="button-container">
-    <button type="submit" class="button button-submit">Iniciar Sesión</button>
-
+    <!-- <button type="submit" class="button button-submit">Iniciar Sesión</button> -->
+    <button type="submit" mat-raised-button color="primary">
+      Iniciar Sesion
+    </button>
     <a routerLink="/auth/register" class="button button-go-to-register">
       Ir a Registro
     </a>
   </div>
 </form>
+
+<br />
+
+<!-- Ejemplo Material -->
+
+<!-- <p>
+  <mat-form-field appearance="fill">
+    <mat-label>Fill form field</mat-label>
+    <input matInput placeholder="Placeholder">
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    <mat-hint>Hint</mat-hint>
+  </mat-form-field>
+</p>
+<p>
+  <mat-form-field appearance="outline">
+    <mat-label>Outline form field</mat-label>
+    <input matInput placeholder="Placeholder">
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    <mat-hint>Hint</mat-hint>
+  </mat-form-field>
+</p> -->

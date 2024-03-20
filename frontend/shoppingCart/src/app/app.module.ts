@@ -8,6 +8,7 @@ import { AuthModule } from './auth/auth.module';
 import { DirectivasComponent } from './directivas/directivas.component';
 import { CiclosComponent } from './ciclos/ciclos.component';
 import { HttpClientModule } from '@angular/common/http';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     AuthModule
   ],
-  providers: [],
+  providers: [
+    provideAnimationsAsync()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

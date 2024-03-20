@@ -1,8 +1,6 @@
 <h2 class="login-title">Registro</h2>
 
-<form [formGroup]="registerForm"
-(ngSubmit)="register()"
-class="login-form">
+<form [formGroup]="registerForm" (ngSubmit)="register()" class="login-form">
   <div class="form-group">
     <label for="username">Usuario</label>
     <input
@@ -25,7 +23,7 @@ class="login-form">
     />
   </div>
 
-  <div class="form-group">
+  <!-- <div class="form-group">
     <label for="role">Rol</label>
     <select name="role" id="role" formControlName="role">
       <option value="administrador">Administrador</option>
@@ -33,12 +31,31 @@ class="login-form">
       <option value="comerciante">Comerciante</option>
       <option value="cliente">Cliente</option>
     </select>
-  </div>
+  </div> -->
+
+  <mat-form-field>
+    <mat-label>Rol</mat-label>
+    <select matNativeControl  >
+      <option value="administrador">administrador</option>
+      <option value="vendedor">vendedor</option>
+      <option value="comerciante">comerciante</option>
+      <option value="cliente">cliente</option>
+    </select>
+  </mat-form-field>
+<!--
+  <mat-form-field>
+    <mat-label>Rol</mat-label>
+    <mat-select [(ngModel)]="selectedValue" formControlName="role">
+      @for (rol of roles; track rol) {
+      <mat-option [value]="rol">{{ rol }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field> -->
 
   <hr />
 
   <div class="button-container">
-    <button  type="submit" class="button button-submit">Registrar</button>
+    <button type="submit" class="button button-submit">Registrar</button>
 
     <a routerLink="/auth/login" class="button button-go-to-login">
       Ir a inicio de sesion
@@ -46,8 +63,5 @@ class="login-form">
   </div>
 </form>
 
-<br>
-<hr>
-<h1>Usuario Creado</h1>
-<p>{{usuarioCreado?.role}}</p>
-<p>{{usuarioCreado?.username}}</p>
+<br />
+<hr />

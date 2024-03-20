@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { AuthService } from './auth/auth.service';
 import { AuthStatus } from './auth/interface/auth-status.enum';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,7 @@ import { AuthStatus } from './auth/interface/auth-status.enum';
 export class AppComponent implements OnInit {
 
   private authService = inject(AuthService);
+  private router = inject(Router);
 
   isAuthenticated: boolean = false;
   title: string = 'ShoppingCart'
@@ -36,6 +38,8 @@ export class AppComponent implements OnInit {
 
   logout(){
     this.authService.logout();
+    this.router.navigateByUrl('auth/login');
+
   }
 
 }

@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { AuthRoutingModule } from './auth-routing.module';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from '../shared/material/material.module';
 
 
 @NgModule({
@@ -12,6 +13,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     LoginComponent
   ],
   imports: [
+    FormsModule,
+    MaterialModule,
     CommonModule,
     AuthRoutingModule,
     ReactiveFormsModule,
